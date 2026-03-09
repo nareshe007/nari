@@ -32,11 +32,11 @@
         </nav>
 
         <!-- Mobile menu button -->
-        <button id="mobileBtn" class="md:hidden p-2 rounded-md focus:outline-none" aria-label="Toggle menu">
-          <svg id="menuOpen" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <button id="mobileMenuToggleButton" class="md:hidden p-2 rounded-md focus:outline-none" aria-label="Toggle menu">
+          <svg id="openMenuIcon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
           </svg>
-          <svg id="menuClose" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg id="closeMenuIcon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
@@ -44,7 +44,7 @@
     </div>
 
     <!-- Mobile menu -->
-    <div id="mobileMenu" class="md:hidden hidden border-t border-slate-100">
+    <div id="mobileNavigationMenu" class="md:hidden hidden border-t border-slate-100">
       <div class="px-4 pb-4 space-y-2">
         <a href="#features" class="block py-2">Features</a>
         <a href="#pricing" class="block py-2">Pricing</a>
@@ -164,7 +164,7 @@
   <!-- Footer -->
   <footer class="border-t bg-white/60 backdrop-blur-sm border-slate-100">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-sm text-slate-600 flex flex-col md:flex-row justify-between items-center gap-4">
-      <div>© <span id="year"></span> Brand — Built with care.</div>
+      <div>© <span id="currentYear"></span> Brand — Built with care.</div>
       <div class="flex gap-4">
         <a href="#" class="hover:text-indigo-600">Privacy</a>
         <a href="#" class="hover:text-indigo-600">Terms</a>
@@ -174,11 +174,19 @@
 
   <script>
     // Mobile menu toggle
-    const mobileBtn = document.getElementById('mobileBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    const menuOpen = document.getElementById('menuOpen');
-    const menuClose = document.getElementById('menuClose');
-    mobileBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-      menuOpen.classList.toggle('hidden');
-      menuClose.classList.toggle('hidden'
+    const mobileMenuToggleButton = document.getElementById('mobileMenuToggleButton');
+    const mobileNavigationMenu = document.getElementById('mobileNavigationMenu');
+    const openMenuIcon = document.getElementById('openMenuIcon');
+    const closeMenuIcon = document.getElementById('closeMenuIcon');
+    mobileMenuToggleButton.addEventListener('click', () => {
+      mobileNavigationMenu.classList.toggle('hidden');
+      openMenuIcon.classList.toggle('hidden');
+      closeMenuIcon.classList.toggle('hidden');
+    });
+
+    // Set current year in footer
+    const currentYearSpan = document.getElementById('currentYear');
+    currentYearSpan.textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
